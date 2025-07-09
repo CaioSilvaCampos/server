@@ -6,7 +6,8 @@ import { schema } from './schema/index.ts'
 
 import { env } from '../env.ts';
 
-await reset(db, {schema})
+
+await reset(db, schema)
 
 await seed(db, schema).refine(f =>{
     return {
@@ -16,6 +17,9 @@ await seed(db, schema).refine(f =>{
                 name: f.companyName(),
                 description: f.loremIpsum()
             },
+        },
+        questions:{
+            count:20,
         },
     }
 })
